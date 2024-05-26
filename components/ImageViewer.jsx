@@ -3,9 +3,10 @@ import React from 'react'
 
 const PlaceHolderImage = require('../assets/images/background-image.png');
 
-const ImageViewer = () => {
+const ImageViewer = ({selectedImage}) => {
+  const imageSource = selectedImage ? {uri: selectedImage} : PlaceHolderImage;
   return (
-    <Image source={PlaceHolderImage} style={styles.image}></Image>
+    <Image source={imageSource} style={styles.image}></Image>
   )
 }
 
