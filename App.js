@@ -11,7 +11,7 @@ export default function App() {
         <ImageViewer />
       </View>
       <View>
-        <Button label="Choose a photo"></Button>
+        <Button theme="primary" label="Choose a photo"></Button>
         <Button label="Use this photo"></Button>
       </View>
       <StatusBar style="auto" />
