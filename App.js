@@ -7,6 +7,7 @@ import { useState } from 'react'
 import IconButton from './components/IconButton';
 import CircleButton from './components/CircleButton';
 import EmojiPicker from './components/EmojiPicker';
+import EmojiList from './components/EmojiList';
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
   const [showAppOptions, setshowAppOptions] = useState(false);
   const [selectedImage, setselectedImage] = useState(null);
   const [isModalVisible, setisModalVisible] = useState(false);
+  const [pickEmoji, setpickEmoji] = useState(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -60,7 +62,9 @@ export default function App() {
           <Button label="Use this photo" onPress={() => setshowAppOptions(true)}></Button>
         </View>
       )}
-      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose} />
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <EmojiList onSelect={setpickEmoji} onModalClose={onModalClose}/>
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
