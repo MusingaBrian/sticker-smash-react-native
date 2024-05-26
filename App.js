@@ -4,6 +4,8 @@ import ImageViewer from './components/ImageViewer';
 import Button from './components/Button';
 import * as ImagePicker from 'expo-image-picker'
 import { useState } from 'react'
+import IconButton from './components/IconButton';
+import CircleButton from './components/CircleButton';
 
 
 export default function App() {
@@ -24,13 +26,26 @@ export default function App() {
       alert('You did not select ant image!!!');
     }
   }
+
+  const onReset = () => {
+    setshowAppOptions(false);
+  };
+  const onAddSticker = () => {};
+  const onSaveImageAsync = async () => {};
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer selectedImage={selectedImage}/>
       </View>
       {showAppOptions ? (
-        <View />
+        <View style={styles.OptionsContainer}>
+          <View style={styles.optionsRow}>
+              <IconButton icon="refresh" label="reset" onPress={onReset}/>
+              <CircleButton onPress={onAddSticker}/>
+              <IconButton icon="save-alt" label="save" onPress={onSaveImageAsync}/>
+          </View>
+        </View>
       ) : (  
         <View style={styles.footerContainer}>
           <Button theme="primary" label="Choose a photo" onPress={pickImageAsync}></Button>
@@ -55,5 +70,13 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1 / 3,
     alignItems: 'center',
+  },
+  OptionsContainer: {
+    position: 'absolute',
+    bottom: 80,
+  },
+  optionsRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
   }
 });
