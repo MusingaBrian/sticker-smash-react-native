@@ -1,6 +1,5 @@
 import { Modal, View, Text, Pressable, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import React from 'react'
 
 const EmojiPicker = ({isVisible, children, onClose}) => {
   return (

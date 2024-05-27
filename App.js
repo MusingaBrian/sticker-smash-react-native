@@ -8,6 +8,7 @@ import IconButton from './components/IconButton';
 import CircleButton from './components/CircleButton';
 import EmojiPicker from './components/EmojiPicker';
 import EmojiList from './components/EmojiList';
+import EmojiSticker from './components/EmojiSticker';
 
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
   const [showAppOptions, setshowAppOptions] = useState(false);
   const [selectedImage, setselectedImage] = useState(null);
   const [isModalVisible, setisModalVisible] = useState(false);
-  const [pickEmoji, setpickEmoji] = useState(null);
+  const [pickedEmoji, setpickedEmoji] = useState(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -40,13 +41,14 @@ export default function App() {
   const onSaveImageAsync = async () => {};
 
   const onModalClose = () => {
-    isModalVisible(false);
+    setisModalVisible(false);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer selectedImage={selectedImage}/>
+        {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji}/>}
       </View>
       {showAppOptions ? (
         <View style={styles.OptionsContainer}>
@@ -63,7 +65,7 @@ export default function App() {
         </View>
       )}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        <EmojiList onSelect={setpickEmoji} onModalClose={onModalClose}/>
+        <EmojiList onSelect={setpickedEmoji} onCloseModal={onModalClose}/>
       </EmojiPicker>
       <StatusBar style="auto" />
     </View>
