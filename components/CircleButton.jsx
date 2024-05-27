@@ -2,11 +2,11 @@ import { View, Pressable, StyleSheet } from 'react-native'
 import { MaterialIcons } from "@expo/vector-icons";
 import React from 'react'
 
-const CircleButton = ({onPress}) => {
+const CircleButton = ({onPress, icon}) => {
   return (
     <View style={styles.circleButtonContainer}>
       <Pressable style={styles.circleButton} onPress={onPress}>
-        <MaterialIcons name='add' size={38} color='#25292e'/>
+        <MaterialIcons name={icon} size={38} color="#25292e"/>
       </Pressable>
     </View>
   )
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 42,
-        borderBlockColor: '#fff',
+        backgroundColor: '#fff',
     }
 })
 
